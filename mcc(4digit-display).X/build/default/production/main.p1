@@ -18,10 +18,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v __delay `JF2931 ~T0 @X0 0 e ]
 [p i __delay ]
 [p mainexit ]
-"1239 C:\Program Files\Microchip\xc8\v1.34\include\pic16f1829.h
-[v _TRISC `Vuc ~T0 @X0 0 e@142 ]
-"501
-[v _PORTC `Vuc ~T0 @X0 0 e@14 ]
+"67 mcc_generated_files/mcc.h
+[v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic16f1829.h: 49: extern volatile unsigned char INDF0 @ 0x000;
@@ -2920,6 +2918,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 184: extern unsigned char __resetbits;
 [; ;pic.h: 185: extern __bit __powerdown;
 [; ;pic.h: 186: extern __bit __timeout;
+[; ;pin_manager.h: 152: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 164: void PIN_MANAGER_IOC(void);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -2948,32 +2948,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 205: typedef uint32_t uintmax_t;
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
-"4 display.c
-[p x FOSC=HS ]
-"5
-[p x WDTE=OFF ]
-"6
-[p x PWRTE=OFF ]
-"7
-[p x MCLRE=OFF ]
-"8
-[p x CP=OFF ]
-"9
-[p x BOREN=ON ]
-"10
-[p x CLKOUTEN=OFF ]
-"11
-[p x WRT=OFF ]
-"21
+[; ;stdbool.h: 12: typedef unsigned char bool;
+[; ;mcc.h: 67: void SYSTEM_Initialize(void);
+[; ;mcc.h: 80: void OSCILLATOR_Initialize(void);
+"8 main.c
 [v _number `ui ~T0 @X0 1 e ]
-[; ;display.c: 21: unsigned int number;
-"22
+[; ;main.c: 8: unsigned int number;
+"9
 [v _d1 `uc ~T0 @X0 1 e ]
 [v _d2 `uc ~T0 @X0 1 e ]
 [v _d3 `uc ~T0 @X0 1 e ]
 [v _d4 `uc ~T0 @X0 1 e ]
-[; ;display.c: 22: unsigned char d1, d2, d3, d4;
-"23
+[; ;main.c: 9: unsigned char d1, d2, d3, d4;
+"10
 [v _Digit `uc ~T0 @X0 -> 10 `i e ]
 [i _Digit
 :U ..
@@ -2989,201 +2976,198 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 9 `i `uc
 ..
 ]
-[; ;display.c: 23: unsigned char Digit[10] = { 0x03, 0x9F, 0X25, 0x0D, 0x99, 0x49, 0x41, 0x1F, 0x01, 0x09 };
-"26
+[; ;main.c: 10: unsigned char Digit[10] = { 0x03, 0x9F, 0X25, 0x0D, 0x99, 0x49, 0x41, 0x1F, 0x01, 0x09 };
+"15
 [v _writeDigit `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;display.c: 26: void writeDigit(unsigned char digit) {
+[; ;main.c: 15: void writeDigit(unsigned char digit) {
 [e :U _writeDigit ]
 [v _digit `uc ~T0 @X0 1 r1 ]
 [f ]
-"27
+"16
 [v _i `uc ~T0 @X0 1 a ]
-[; ;display.c: 27: unsigned char i;
-[; ;display.c: 28: LATC7 = 0;
-"28
+[; ;main.c: 16: unsigned char i;
+[; ;main.c: 17: LATC7 = 0;
+"17
 [e = _LATC7 -> -> 0 `i `b ]
-[; ;display.c: 29: LATC5 = 0;
-"29
+[; ;main.c: 18: LATC5 = 0;
+"18
 [e = _LATC5 -> -> 0 `i `b ]
-[; ;display.c: 30: LATC7 = 0;
-"30
+[; ;main.c: 19: LATC7 = 0;
+"19
 [e = _LATC7 -> -> 0 `i `b ]
-[; ;display.c: 31: LATC5 = 0;
-"31
+[; ;main.c: 20: LATC5 = 0;
+"20
 [e = _LATC5 -> -> 0 `i `b ]
-[; ;display.c: 32: for (i = 0; i < 8; i++) {
-"32
+[; ;main.c: 21: for (i = 0; i < 8; i++) {
+"21
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 8 `i 369  ]
 [e $U 370  ]
 [e :U 369 ]
 {
-[; ;display.c: 33: LATC6 = (digit >> i) & 0x01;
-"33
+[; ;main.c: 22: LATC6 = (digit >> i) & 0x01;
+"22
 [e = _LATC6 -> & >> -> _digit `i _i -> 1 `i `b ]
-[; ;display.c: 34: LATC7 = 1;
-"34
+[; ;main.c: 23: LATC7 = 1;
+"23
 [e = _LATC7 -> -> 1 `i `b ]
-[; ;display.c: 35: LATC7 = 1;
-"35
+[; ;main.c: 24: LATC7 = 1;
+"24
 [e = _LATC7 -> -> 1 `i `b ]
-[; ;display.c: 36: LATC7 = 0;
-"36
+[; ;main.c: 25: LATC7 = 0;
+"25
 [e = _LATC7 -> -> 0 `i `b ]
-[; ;display.c: 37: LATC7 = 0;
-"37
+[; ;main.c: 26: LATC7 = 0;
+"26
 [e = _LATC7 -> -> 0 `i `b ]
-"38
+"27
 }
-"32
+"21
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 8 `i 369  ]
 [e :U 370 ]
-"38
+"27
 }
-[; ;display.c: 38: }
-[; ;display.c: 39: LATC5 = 1;
-"39
+[; ;main.c: 27: }
+[; ;main.c: 28: LATC5 = 1;
+"28
 [e = _LATC5 -> -> 1 `i `b ]
-[; ;display.c: 40: LATC5 = 1;
-"40
+[; ;main.c: 29: LATC5 = 1;
+"29
 [e = _LATC5 -> -> 1 `i `b ]
-[; ;display.c: 41: }
-"41
+[; ;main.c: 30: }
+"30
 [e :UE 368 ]
 }
-"43
+"32
 [v _displayNumber `(v ~T0 @X0 1 ef1`ui ]
 {
-[; ;display.c: 43: void displayNumber(unsigned int number1) {
+[; ;main.c: 32: void displayNumber(unsigned int number1) {
 [e :U _displayNumber ]
 [v _number1 `ui ~T0 @X0 1 r1 ]
 [f ]
-[; ;display.c: 45: d1 = number1 / 1000;
-"45
+[; ;main.c: 34: d1 = number1 / 1000;
+"34
 [e = _d1 -> / _number1 -> -> 1000 `i `ui `uc ]
-[; ;display.c: 46: number1 %= 1000;
-"46
+[; ;main.c: 35: number1 %= 1000;
+"35
 [e =% _number1 -> -> 1000 `us `ui ]
-[; ;display.c: 47: d2 = number1 / 100;
-"47
+[; ;main.c: 36: d2 = number1 / 100;
+"36
 [e = _d2 -> / _number1 -> -> 100 `i `ui `uc ]
-[; ;display.c: 48: number1 %= 100;
-"48
+[; ;main.c: 37: number1 %= 100;
+"37
 [e =% _number1 -> -> 100 `uc `ui ]
-[; ;display.c: 49: d3 = number1 / 10;
-"49
+[; ;main.c: 38: d3 = number1 / 10;
+"38
 [e = _d3 -> / _number1 -> -> 10 `i `ui `uc ]
-[; ;display.c: 50: d4 = number1 % 10;
-"50
+[; ;main.c: 39: d4 = number1 % 10;
+"39
 [e = _d4 -> % _number1 -> -> 10 `i `ui `uc ]
-[; ;display.c: 59: LATCbits.LATC3 = 1;
-"59
+[; ;main.c: 48: LATCbits.LATC3 = 1;
+"48
 [e = . . _LATCbits 0 3 -> -> 1 `i `uc ]
-[; ;display.c: 60: LATCbits.LATC4 = 1;
-"60
+[; ;main.c: 49: LATCbits.LATC4 = 1;
+"49
 [e = . . _LATCbits 0 4 -> -> 1 `i `uc ]
-[; ;display.c: 61: writeDigit(Digit[d1]);
-"61
+[; ;main.c: 50: writeDigit(Digit[d1]);
+"50
 [e ( _writeDigit (1 *U + &U _Digit * -> _d1 `ux -> -> # *U &U _Digit `ui `ux ]
-[; ;display.c: 62: _delay((unsigned long)((50)*(4000000/4000.0)));
-"62
+[; ;main.c: 51: _delay((unsigned long)((50)*(4000000/4000.0)));
+"51
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;display.c: 65: LATCbits.LATC3 = 0;
-"65
+[; ;main.c: 54: LATCbits.LATC3 = 0;
+"54
 [e = . . _LATCbits 0 3 -> -> 0 `i `uc ]
-[; ;display.c: 66: LATCbits.LATC4 = 1;
-"66
+[; ;main.c: 55: LATCbits.LATC4 = 1;
+"55
 [e = . . _LATCbits 0 4 -> -> 1 `i `uc ]
-[; ;display.c: 67: writeDigit(Digit[d2]);
-"67
+[; ;main.c: 56: writeDigit(Digit[d2]);
+"56
 [e ( _writeDigit (1 *U + &U _Digit * -> _d2 `ux -> -> # *U &U _Digit `ui `ux ]
-[; ;display.c: 68: _delay((unsigned long)((50)*(4000000/4000.0)));
-"68
+[; ;main.c: 57: _delay((unsigned long)((50)*(4000000/4000.0)));
+"57
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;display.c: 71: LATCbits.LATC3 = 1;
-"71
+[; ;main.c: 60: LATCbits.LATC3 = 1;
+"60
 [e = . . _LATCbits 0 3 -> -> 1 `i `uc ]
-[; ;display.c: 72: LATCbits.LATC4 = 0;
-"72
+[; ;main.c: 61: LATCbits.LATC4 = 0;
+"61
 [e = . . _LATCbits 0 4 -> -> 0 `i `uc ]
-[; ;display.c: 73: writeDigit(Digit[d3]);
-"73
+[; ;main.c: 62: writeDigit(Digit[d3]);
+"62
 [e ( _writeDigit (1 *U + &U _Digit * -> _d3 `ux -> -> # *U &U _Digit `ui `ux ]
-[; ;display.c: 74: _delay((unsigned long)((50)*(4000000/4000.0)));
-"74
+[; ;main.c: 63: _delay((unsigned long)((50)*(4000000/4000.0)));
+"63
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;display.c: 77: LATCbits.LATC3 = 0;
-"77
+[; ;main.c: 66: LATCbits.LATC3 = 0;
+"66
 [e = . . _LATCbits 0 3 -> -> 0 `i `uc ]
-[; ;display.c: 78: LATCbits.LATC4 = 0;
-"78
+[; ;main.c: 67: LATCbits.LATC4 = 0;
+"67
 [e = . . _LATCbits 0 4 -> -> 0 `i `uc ]
-[; ;display.c: 79: writeDigit(Digit[d4]);
-"79
+[; ;main.c: 68: writeDigit(Digit[d4]);
+"68
 [e ( _writeDigit (1 *U + &U _Digit * -> _d4 `ux -> -> # *U &U _Digit `ui `ux ]
-[; ;display.c: 80: _delay((unsigned long)((50)*(4000000/4000.0)));
-"80
+[; ;main.c: 69: _delay((unsigned long)((50)*(4000000/4000.0)));
+"69
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;display.c: 81: }
-"81
+[; ;main.c: 70: }
+"70
 [e :UE 372 ]
 }
-"83
+"72
 [v _main `(v ~T0 @X0 1 ef ]
-"84
+"73
 {
-[; ;display.c: 83: void main(void)
-[; ;display.c: 84: {
+[; ;main.c: 72: void main(void)
+[; ;main.c: 73: {
 [e :U _main ]
 [f ]
-[; ;display.c: 85: TRISC = 0x00;
-"85
-[e = _TRISC -> -> 0 `i `uc ]
-[; ;display.c: 86: PORTC=0x00;
-"86
-[e = _PORTC -> -> 0 `i `uc ]
-[; ;display.c: 89: while (1)
-"89
+[; ;main.c: 75: SYSTEM_Initialize();
+"75
+[e ( _SYSTEM_Initialize ..  ]
+[; ;main.c: 92: while (1)
+"92
 [e :U 375 ]
-[; ;display.c: 90: {
-"90
-{
-[; ;display.c: 93: for (number = 0; number < 10000; number++)
+[; ;main.c: 93: {
 "93
+{
+[; ;main.c: 94: for (number = 0; number < 10000; number++)
+"94
 {
 [e = _number -> -> 0 `i `ui ]
 [e $ < _number -> -> 10000 `i `ui 377  ]
 [e $U 378  ]
-"94
-[e :U 377 ]
-[; ;display.c: 94: {
-{
-[; ;display.c: 95: displayNumber(number);
 "95
-[e ( _displayNumber (1 _number ]
-[; ;display.c: 96: _delay((unsigned long)((10)*(4000000/4000.0)));
+[e :U 377 ]
+[; ;main.c: 95: {
+{
+[; ;main.c: 96: displayNumber(number);
 "96
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[e ( _displayNumber (1 _number ]
+[; ;main.c: 97: _delay((unsigned long)((10)*(4000000/4000.0)));
 "97
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"98
 }
-"93
+"94
 [e ++ _number -> -> 1 `i `ui ]
 [e $ < _number -> -> 10000 `i `ui 377  ]
 [e :U 378 ]
-"97
-}
 "98
 }
+"99
+}
 [e :U 374 ]
-"89
+"92
 [e $U 375  ]
 [e :U 376 ]
-[; ;display.c: 97: }
-[; ;display.c: 98: }
-[; ;display.c: 99: }
-"99
+[; ;main.c: 98: }
+[; ;main.c: 99: }
+[; ;main.c: 100: }
+"100
 [e :UE 373 ]
 }

@@ -1,27 +1,16 @@
+#include "mcc_generated_files/mcc.h"
 #include <xc.h>
-#include <stdint.h>
-
-#pragma config FOSC = HS     
-#pragma config WDTE = OFF     
-#pragma config PWRTE = OFF    
-#pragma config MCLRE = OFF    
-#pragma config CP = OFF      
-#pragma config BOREN = ON    
-#pragma config CLKOUTEN = OFF 
-#pragma config WRT = OFF    
-
-#define _XTAL_FREQ 4000000  
-
-#define Dgt1 LATCbits.LATC3  
-#define Dgt2 LATCbits.LATC4  
+#define Dgt1 LATCbits.LATC3
+#define Dgt2 LATCbits.LATC4
 #define DS  LATC6      //PORTCbits.RC6
 #define STCP LATC5     //PORTCbits.RC5
 #define SHCP LATC7     //PORTCbits.RC7
-
  unsigned int number;
  unsigned char d1, d2, d3, d4;
 unsigned char Digit[10] = { 0x03, 0x9F, 0X25, 0x0D, 0x99, 0x49, 0x41, 0x1F, 0x01, 0x09 };// SIRASIYLA 0,1,2,3,4,5,6,7,8,9
-
+/*
+                         Main application
+ */
 
 void writeDigit(unsigned char digit) {
     unsigned char i;
@@ -41,7 +30,7 @@ void writeDigit(unsigned char digit) {
 }
 
 void displayNumber(unsigned int number1) {
-   
+
     d1 = number1 / 1000;
     number1 %= 1000;
     d2 = number1 / 100;
@@ -82,14 +71,26 @@ void displayNumber(unsigned int number1) {
 
 void main(void)
 {
-    TRISC = 0x00;
-    PORTC=0x00;
+    // initialize the device
+    SYSTEM_Initialize();
 
+    // When using interrupts, you need to set the Global and Peripheral Interrupt Enable bits
+    // Use the following macros to:
+
+    // Enable the Global Interrupts
+    //INTERRUPT_GlobalInterruptEnable();
+
+    // Enable the Peripheral Interrupts
+    //INTERRUPT_PeripheralInterruptEnable();
+
+    // Disable the Global Interrupts
+    //INTERRUPT_GlobalInterruptDisable();
+
+    // Disable the Peripheral Interrupts
+    //INTERRUPT_PeripheralInterruptDisable();
 
     while (1)
     {
-       
-        
         for (number = 0; number < 10000; number++)
         {
             displayNumber(number);
@@ -97,4 +98,6 @@ void main(void)
         }
     }
 }
-
+/**
+ End of File
+*/

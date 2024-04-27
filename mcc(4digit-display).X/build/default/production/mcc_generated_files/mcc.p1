@@ -1,27 +1,44 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"7366 C:\Program Files\Microchip\xc8\v1.34\include\pic16f1829.h
-[v _LATC7 `Vb ~T0 @X0 0 e@2167 ]
-"7362
-[v _LATC5 `Vb ~T0 @X0 0 e@2165 ]
-"7364
-[v _LATC6 `Vb ~T0 @X0 0 e@2166 ]
-"2136
-[s S114 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S114 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
-"2135
-[u S113 `S114 1 ]
-[n S113 . . ]
-"2147
-[v _LATCbits `VS113 ~T0 @X0 0 e@270 ]
-[v F2931 `(v ~T0 @X0 1 tf1`ul ]
-"150 C:\Program Files\Microchip\xc8\v1.34\include\pic.h
-[v __delay `JF2931 ~T0 @X0 0 e ]
-[p i __delay ]
-[p mainexit ]
-"1239 C:\Program Files\Microchip\xc8\v1.34\include\pic16f1829.h
-[v _TRISC `Vuc ~T0 @X0 0 e@142 ]
-"501
-[v _PORTC `Vuc ~T0 @X0 0 e@14 ]
+"80 mcc_generated_files/mcc.h
+[v _OSCILLATOR_Initialize `(v ~T0 @X0 0 ef ]
+"152 mcc_generated_files/pin_manager.h
+[v _PIN_MANAGER_Initialize `(v ~T0 @X0 0 ef ]
+"1722 C:\Program Files\Microchip\xc8\v1.34\include\pic16f1829.h
+[v _OSCCON `Vuc ~T0 @X0 0 e@153 ]
+"1793
+[v _OSCSTAT `Vuc ~T0 @X0 0 e@154 ]
+"1665
+[v _OSCTUNE `Vuc ~T0 @X0 0 e@152 ]
+"50 mcc_generated_files/mcc.c
+[p x IESO=ON ]
+"51
+[p x BOREN=ON ]
+"52
+[p x PWRTE=OFF ]
+"53
+[p x FOSC=INTOSC ]
+"54
+[p x FCMEN=ON ]
+"55
+[p x MCLRE=ON ]
+"56
+[p x CP=OFF ]
+"57
+[p x CPD=OFF ]
+"58
+[p x WDTE=OFF ]
+"59
+[p x CLKOUTEN=OFF ]
+"62
+[p x WRT=OFF ]
+"63
+[p x LVP=OFF ]
+"64
+[p x STVREN=ON ]
+"65
+[p x PLLEN=OFF ]
+"66
+[p x BORV=LO ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic16f1829.h: 49: extern volatile unsigned char INDF0 @ 0x000;
@@ -2920,6 +2937,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 184: extern unsigned char __resetbits;
 [; ;pic.h: 185: extern __bit __powerdown;
 [; ;pic.h: 186: extern __bit __timeout;
+[; ;pin_manager.h: 152: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 164: void PIN_MANAGER_IOC(void);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -2948,242 +2967,45 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 205: typedef uint32_t uintmax_t;
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
-"4 display.c
-[p x FOSC=HS ]
-"5
-[p x WDTE=OFF ]
-"6
-[p x PWRTE=OFF ]
-"7
-[p x MCLRE=OFF ]
-"8
-[p x CP=OFF ]
-"9
-[p x BOREN=ON ]
-"10
-[p x CLKOUTEN=OFF ]
-"11
-[p x WRT=OFF ]
-"21
-[v _number `ui ~T0 @X0 1 e ]
-[; ;display.c: 21: unsigned int number;
-"22
-[v _d1 `uc ~T0 @X0 1 e ]
-[v _d2 `uc ~T0 @X0 1 e ]
-[v _d3 `uc ~T0 @X0 1 e ]
-[v _d4 `uc ~T0 @X0 1 e ]
-[; ;display.c: 22: unsigned char d1, d2, d3, d4;
-"23
-[v _Digit `uc ~T0 @X0 -> 10 `i e ]
-[i _Digit
-:U ..
--> -> 3 `i `uc
--> -> 159 `i `uc
--> -> 37 `i `uc
--> -> 13 `i `uc
--> -> 153 `i `uc
--> -> 73 `i `uc
--> -> 65 `i `uc
--> -> 31 `i `uc
--> -> 1 `i `uc
--> -> 9 `i `uc
-..
-]
-[; ;display.c: 23: unsigned char Digit[10] = { 0x03, 0x9F, 0X25, 0x0D, 0x99, 0x49, 0x41, 0x1F, 0x01, 0x09 };
-"26
-[v _writeDigit `(v ~T0 @X0 1 ef1`uc ]
+[; ;stdbool.h: 12: typedef unsigned char bool;
+[; ;mcc.h: 67: void SYSTEM_Initialize(void);
+[; ;mcc.h: 80: void OSCILLATOR_Initialize(void);
+"70 mcc_generated_files/mcc.c
+[v _SYSTEM_Initialize `(v ~T0 @X0 1 ef ]
+"71
 {
-[; ;display.c: 26: void writeDigit(unsigned char digit) {
-[e :U _writeDigit ]
-[v _digit `uc ~T0 @X0 1 r1 ]
+[; ;mcc.c: 70: void SYSTEM_Initialize(void)
+[; ;mcc.c: 71: {
+[e :U _SYSTEM_Initialize ]
 [f ]
-"27
-[v _i `uc ~T0 @X0 1 a ]
-[; ;display.c: 27: unsigned char i;
-[; ;display.c: 28: LATC7 = 0;
-"28
-[e = _LATC7 -> -> 0 `i `b ]
-[; ;display.c: 29: LATC5 = 0;
-"29
-[e = _LATC5 -> -> 0 `i `b ]
-[; ;display.c: 30: LATC7 = 0;
-"30
-[e = _LATC7 -> -> 0 `i `b ]
-[; ;display.c: 31: LATC5 = 0;
-"31
-[e = _LATC5 -> -> 0 `i `b ]
-[; ;display.c: 32: for (i = 0; i < 8; i++) {
-"32
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 8 `i 369  ]
-[e $U 370  ]
-[e :U 369 ]
-{
-[; ;display.c: 33: LATC6 = (digit >> i) & 0x01;
-"33
-[e = _LATC6 -> & >> -> _digit `i _i -> 1 `i `b ]
-[; ;display.c: 34: LATC7 = 1;
-"34
-[e = _LATC7 -> -> 1 `i `b ]
-[; ;display.c: 35: LATC7 = 1;
-"35
-[e = _LATC7 -> -> 1 `i `b ]
-[; ;display.c: 36: LATC7 = 0;
-"36
-[e = _LATC7 -> -> 0 `i `b ]
-[; ;display.c: 37: LATC7 = 0;
-"37
-[e = _LATC7 -> -> 0 `i `b ]
-"38
-}
-"32
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 8 `i 369  ]
-[e :U 370 ]
-"38
-}
-[; ;display.c: 38: }
-[; ;display.c: 39: LATC5 = 1;
-"39
-[e = _LATC5 -> -> 1 `i `b ]
-[; ;display.c: 40: LATC5 = 1;
-"40
-[e = _LATC5 -> -> 1 `i `b ]
-[; ;display.c: 41: }
-"41
+[; ;mcc.c: 72: OSCILLATOR_Initialize();
+"72
+[e ( _OSCILLATOR_Initialize ..  ]
+[; ;mcc.c: 73: PIN_MANAGER_Initialize();
+"73
+[e ( _PIN_MANAGER_Initialize ..  ]
+[; ;mcc.c: 74: }
+"74
 [e :UE 368 ]
 }
-"43
-[v _displayNumber `(v ~T0 @X0 1 ef1`ui ]
-{
-[; ;display.c: 43: void displayNumber(unsigned int number1) {
-[e :U _displayNumber ]
-[v _number1 `ui ~T0 @X0 1 r1 ]
-[f ]
-[; ;display.c: 45: d1 = number1 / 1000;
-"45
-[e = _d1 -> / _number1 -> -> 1000 `i `ui `uc ]
-[; ;display.c: 46: number1 %= 1000;
-"46
-[e =% _number1 -> -> 1000 `us `ui ]
-[; ;display.c: 47: d2 = number1 / 100;
-"47
-[e = _d2 -> / _number1 -> -> 100 `i `ui `uc ]
-[; ;display.c: 48: number1 %= 100;
-"48
-[e =% _number1 -> -> 100 `uc `ui ]
-[; ;display.c: 49: d3 = number1 / 10;
-"49
-[e = _d3 -> / _number1 -> -> 10 `i `ui `uc ]
-[; ;display.c: 50: d4 = number1 % 10;
-"50
-[e = _d4 -> % _number1 -> -> 10 `i `ui `uc ]
-[; ;display.c: 59: LATCbits.LATC3 = 1;
-"59
-[e = . . _LATCbits 0 3 -> -> 1 `i `uc ]
-[; ;display.c: 60: LATCbits.LATC4 = 1;
-"60
-[e = . . _LATCbits 0 4 -> -> 1 `i `uc ]
-[; ;display.c: 61: writeDigit(Digit[d1]);
-"61
-[e ( _writeDigit (1 *U + &U _Digit * -> _d1 `ux -> -> # *U &U _Digit `ui `ux ]
-[; ;display.c: 62: _delay((unsigned long)((50)*(4000000/4000.0)));
-"62
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;display.c: 65: LATCbits.LATC3 = 0;
-"65
-[e = . . _LATCbits 0 3 -> -> 0 `i `uc ]
-[; ;display.c: 66: LATCbits.LATC4 = 1;
-"66
-[e = . . _LATCbits 0 4 -> -> 1 `i `uc ]
-[; ;display.c: 67: writeDigit(Digit[d2]);
-"67
-[e ( _writeDigit (1 *U + &U _Digit * -> _d2 `ux -> -> # *U &U _Digit `ui `ux ]
-[; ;display.c: 68: _delay((unsigned long)((50)*(4000000/4000.0)));
-"68
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;display.c: 71: LATCbits.LATC3 = 1;
-"71
-[e = . . _LATCbits 0 3 -> -> 1 `i `uc ]
-[; ;display.c: 72: LATCbits.LATC4 = 0;
-"72
-[e = . . _LATCbits 0 4 -> -> 0 `i `uc ]
-[; ;display.c: 73: writeDigit(Digit[d3]);
-"73
-[e ( _writeDigit (1 *U + &U _Digit * -> _d3 `ux -> -> # *U &U _Digit `ui `ux ]
-[; ;display.c: 74: _delay((unsigned long)((50)*(4000000/4000.0)));
-"74
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;display.c: 77: LATCbits.LATC3 = 0;
+"76
+[v _OSCILLATOR_Initialize `(v ~T0 @X0 1 ef ]
 "77
-[e = . . _LATCbits 0 3 -> -> 0 `i `uc ]
-[; ;display.c: 78: LATCbits.LATC4 = 0;
-"78
-[e = . . _LATCbits 0 4 -> -> 0 `i `uc ]
-[; ;display.c: 79: writeDigit(Digit[d4]);
-"79
-[e ( _writeDigit (1 *U + &U _Digit * -> _d4 `ux -> -> # *U &U _Digit `ui `ux ]
-[; ;display.c: 80: _delay((unsigned long)((50)*(4000000/4000.0)));
-"80
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;display.c: 81: }
-"81
-[e :UE 372 ]
-}
-"83
-[v _main `(v ~T0 @X0 1 ef ]
-"84
 {
-[; ;display.c: 83: void main(void)
-[; ;display.c: 84: {
-[e :U _main ]
+[; ;mcc.c: 76: void OSCILLATOR_Initialize(void)
+[; ;mcc.c: 77: {
+[e :U _OSCILLATOR_Initialize ]
 [f ]
-[; ;display.c: 85: TRISC = 0x00;
-"85
-[e = _TRISC -> -> 0 `i `uc ]
-[; ;display.c: 86: PORTC=0x00;
+[; ;mcc.c: 79: OSCCON = 0x6A;
+"79
+[e = _OSCCON -> -> 106 `i `uc ]
+[; ;mcc.c: 81: OSCSTAT = 0x00;
+"81
+[e = _OSCSTAT -> -> 0 `i `uc ]
+[; ;mcc.c: 83: OSCTUNE = 0x00;
+"83
+[e = _OSCTUNE -> -> 0 `i `uc ]
+[; ;mcc.c: 86: }
 "86
-[e = _PORTC -> -> 0 `i `uc ]
-[; ;display.c: 89: while (1)
-"89
-[e :U 375 ]
-[; ;display.c: 90: {
-"90
-{
-[; ;display.c: 93: for (number = 0; number < 10000; number++)
-"93
-{
-[e = _number -> -> 0 `i `ui ]
-[e $ < _number -> -> 10000 `i `ui 377  ]
-[e $U 378  ]
-"94
-[e :U 377 ]
-[; ;display.c: 94: {
-{
-[; ;display.c: 95: displayNumber(number);
-"95
-[e ( _displayNumber (1 _number ]
-[; ;display.c: 96: _delay((unsigned long)((10)*(4000000/4000.0)));
-"96
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"97
-}
-"93
-[e ++ _number -> -> 1 `i `ui ]
-[e $ < _number -> -> 10000 `i `ui 377  ]
-[e :U 378 ]
-"97
-}
-"98
-}
-[e :U 374 ]
-"89
-[e $U 375  ]
-[e :U 376 ]
-[; ;display.c: 97: }
-[; ;display.c: 98: }
-[; ;display.c: 99: }
-"99
-[e :UE 373 ]
+[e :UE 369 ]
 }

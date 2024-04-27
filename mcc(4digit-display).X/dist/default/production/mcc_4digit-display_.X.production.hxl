@@ -1,14 +1,14 @@
 ### HEXMate logfile and output summary ###
 ### Memory Usage ###
  Unused memory ranges:
-  8h - CFFh
+  8h - C9Fh
   1000h - FFFFh
   10000h - 1000Dh
   10012h - 1003Fh
   
- dist/default/production\zaman_r_lesi_4_digit_7segment_display_25.04.2024_.X.production.hex ranges:
+ dist/default/production\mcc_4digit-display_.X.production.hex ranges:
   0h - 7h
-  D00h - FFFh
+  CA0h - FFFh
   1000Eh - 10011h
   
 ### Hex Memory Map ###
@@ -22,8 +22,10 @@
   T = Trailing code
   & = Find & replace opcode
   X = Find & delete opcode
-  1 = dist/default/production\zaman_r_lesi_4_digit_7segment_display_25.04.2024_.X.production.hex
+  1 = dist/default/production\mcc_4digit-display_.X.production.hex
 00000000: 11111111--------------------------------------------------------
+00000C80: --------------------------------11111111111111111111111111111111
+00000CC0: 1111111111111111111111111111111111111111111111111111111111111111
 00000D00: 1111111111111111111111111111111111111111111111111111111111111111
 00000D40: 1111111111111111111111111111111111111111111111111111111111111111
 00000D80: 1111111111111111111111111111111111111111111111111111111111111111
