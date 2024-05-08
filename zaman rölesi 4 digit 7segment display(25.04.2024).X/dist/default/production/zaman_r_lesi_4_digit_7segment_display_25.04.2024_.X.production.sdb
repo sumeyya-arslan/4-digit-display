@@ -15,14 +15,36 @@
 [v _eecpymem eecpymem `(v  1 e 0 0 ]
 "24
 [v _memcpyee memcpyee `(v  1 e 0 0 ]
-"26 C:\Users\stajyer.elektronik\Desktop\zaman rölesi 4 digit 7segment display(25.04.2024).X\display.c
+"28 C:\Users\stajyer.elektronik\Desktop\zaman rölesi 4 digit 7segment display(25.04.2024).X\display.c
 [v _writeDigit writeDigit `(v  1 e 0 0 ]
-"43
+"47
 [v _displayNumber displayNumber `(v  1 e 0 0 ]
-"83
+"78
+[v _initTimer1 initTimer1 `(v  1 e 0 0 ]
+"89
+[v _Timer1_ISR Timer1_ISR `II(v  1 e 0 0 ]
+"101
 [v _main main `(v  1 e 0 0 ]
 "501 C:\Program Files\Microchip\xc8\v1.34\include\pic16f1829.h
 [v _PORTC PORTC `VEuc  1 e 1 @14 ]
+"756
+[v _TMR1 TMR1 `VEus  1 e 2 @22 ]
+[s S49 . 1 `uc 1 TMR1ON 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 nT1SYNC 1 0 :1:2 
+`uc 1 T1OSCEN 1 0 :1:3 
+`uc 1 T1CKPS0 1 0 :1:4 
+`uc 1 T1CKPS1 1 0 :1:5 
+`uc 1 TMR1CS0 1 0 :1:6 
+`uc 1 TMR1CS1 1 0 :1:7 
+]
+"822
+[s S58 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 T1CKPS 1 0 :2:4 
+`uc 1 TMR1CS 1 0 :2:6 
+]
+[u S62 . 1 `S49 1 . 1 0 `S58 1 . 1 0 ]
+[v _T1CONbits T1CONbits `VES62  1 e 1 @24 ]
 "1239
 [v _TRISC TRISC `VEuc  1 e 1 @142 ]
 [s S22 . 1 `uc 1 LATC0 1 0 :1:0 
@@ -37,63 +59,81 @@
 "2147
 [u S31 . 1 `S22 1 . 1 0 ]
 [v _LATCbits LATCbits `VES31  1 e 1 @270 ]
+"7208
+[v _GIE GIE `VEb  1 e 0 @95 ]
 "7362
 [v _LATC5 LATC5 `VEb  1 e 0 @2165 ]
 "7364
 [v _LATC6 LATC6 `VEb  1 e 0 @2166 ]
 "7366
 [v _LATC7 LATC7 `VEb  1 e 0 @2167 ]
-"21 C:\Users\stajyer.elektronik\Desktop\zaman rölesi 4 digit 7segment display(25.04.2024).X\display.c
-[v _number number `ui  1 e 2 0 ]
-"22
+"7482
+[v _PEIE PEIE `VEb  1 e 0 @94 ]
+"7736
+[v _TMR1IE TMR1IE `VEb  1 e 0 @1160 ]
+"7738
+[v _TMR1IF TMR1IF `VEb  1 e 0 @136 ]
+"23 C:\Users\stajyer.elektronik\Desktop\zaman rölesi 4 digit 7segment display(25.04.2024).X\display.c
 [v _d1 d1 `uc  1 e 1 0 ]
 [v _d2 d2 `uc  1 e 1 0 ]
 [v _d3 d3 `uc  1 e 1 0 ]
 [v _d4 d4 `uc  1 e 1 0 ]
-"23
+"24
 [v _Digit Digit `[10]uc  1 e 10 0 ]
-"83
+"26
+[v _number number `VEui  1 e 2 0 ]
+"101
 [v _main main `(v  1 e 0 0 ]
 {
-"99
+"112
 } 0
-"43
+"78
+[v _initTimer1 initTimer1 `(v  1 e 0 0 ]
+{
+"87
+} 0
+"47
 [v _displayNumber displayNumber `(v  1 e 0 0 ]
 {
-[v displayNumber@number1 number1 `ui  1 p 2 8 ]
-"81
+[v displayNumber@number1 number1 `ui  1 p 2 9 ]
+"76
 } 0
-"26
+"28
 [v _writeDigit writeDigit `(v  1 e 0 0 ]
 {
 [v writeDigit@digit digit `uc  1 a 1 wreg ]
-"27
-[v writeDigit@i i `uc  1 a 1 2 ]
-"26
-[v writeDigit@digit digit `uc  1 a 1 wreg ]
+"30
+[v writeDigit@i i `uc  1 a 1 3 ]
 "28
-[v writeDigit@digit digit `uc  1 a 1 1 ]
-"41
+[v writeDigit@digit digit `uc  1 a 1 wreg ]
+"31
+[v writeDigit@digit digit `uc  1 a 1 2 ]
+"45
 } 0
 "6 C:\Program Files\Microchip\xc8\v1.34\sources\common\lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
 {
 "11
-[v ___lwmod@counter counter `uc  1 a 1 5 ]
+[v ___lwmod@counter counter `uc  1 a 1 6 ]
 "6
-[v ___lwmod@divisor divisor `ui  1 p 2 0 ]
-[v ___lwmod@dividend dividend `ui  1 p 2 2 ]
+[v ___lwmod@divisor divisor `ui  1 p 2 1 ]
+[v ___lwmod@dividend dividend `ui  1 p 2 3 ]
 "26
 } 0
 "6 C:\Program Files\Microchip\xc8\v1.34\sources\common\lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 {
 "11
-[v ___lwdiv@quotient quotient `ui  1 a 2 5 ]
+[v ___lwdiv@quotient quotient `ui  1 a 2 6 ]
 "12
-[v ___lwdiv@counter counter `uc  1 a 1 7 ]
+[v ___lwdiv@counter counter `uc  1 a 1 8 ]
 "6
-[v ___lwdiv@divisor divisor `ui  1 p 2 0 ]
-[v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
+[v ___lwdiv@divisor divisor `ui  1 p 2 1 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 3 ]
 "31
+} 0
+"89 C:\Users\stajyer.elektronik\Desktop\zaman rölesi 4 digit 7segment display(25.04.2024).X\display.c
+[v _Timer1_ISR Timer1_ISR `II(v  1 e 0 0 ]
+{
+"99
 } 0
